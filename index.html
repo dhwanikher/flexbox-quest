@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox Quest — Dhwani Kherawat</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ───────────────────────────────────────────
+         PART 2 — Display Properties Experiment
+         (Embedded as a small hidden demo at top)
+    ─────────────────────────────────────────── -->
+    <section class="display-demo" aria-label="Display Properties Experiment">
+        <h2 class="demo-title">Part 2 — Display Properties Experiment</h2>
+        <p class="demo-note">Toggle the .box class below to see block vs inline-block vs flex behaviour (described in answers below).</p>
+
+        <div class="demo-row">
+            <div class="demo-group">
+                <h3>block (default div)</h3>
+                <div class="box block-demo">Box 1</div>
+                <div class="box block-demo">Box 2</div>
+            </div>
+
+            <div class="demo-group">
+                <h3>inline-block (span)</h3>
+                <span class="item inline-block-demo">Item 1</span>
+                <span class="item inline-block-demo">Item 2</span>
+            </div>
+
+            <div class="demo-group">
+                <h3>flex container</h3>
+                <div class="flex-demo">
+                    <div class="box">Box A</div>
+                    <div class="box">Box B</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="display-answers">
+            <h3>Observations &amp; Answers</h3>
+            <ol>
+                <li><strong>Default &lt;div&gt;</strong>: <code>display: block</code>. Takes full width, starts on a new line, supports margin/padding on all sides.</li>
+                <li><strong>Default &lt;span&gt;</strong>: <code>display: inline</code>. Only as wide as content, sits on the same line, top/bottom margin has no effect.</li>
+                <li><strong>inline-block</strong>: Sits on the same line like inline, but respects width, height, and full box model like block.</li>
+                <li><strong>display: flex</strong>: Turns the container into a flex container; children (flex items) line up horizontally by default, and you gain access to justify-content, align-items, gap, etc.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- ───────────────────────────────────────────
+         MAIN GAME INTERFACE
+    ─────────────────────────────────────────── -->
+
+    <!-- PART 3 — Game Header -->
+    <header class="game-header">
+        <h1 class="game-title">⚔️ Flexbox Quest</h1>
+
+        <div class="game-info">
+            <span class="stat">❤️ Lives: <strong>3</strong></span>
+            <span class="stat">🪙 Coins: <strong>120</strong></span>
+            <span class="stat">⭐ Level: <strong>1</strong></span>
+        </div>
+
+        <div class="header-actions">
+            <button class="btn btn-pause">⏸ Pause</button>
+            <button class="btn btn-menu">☰ Menu</button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- PART 4 — Game Area -->
+        <section class="game-area" aria-label="Game Area">
+            <p class="area-label">GAME AREA</p>
+
+            <div class="game-canvas">
+
+                <!-- Row 1: player + star -->
+                <div class="row row-top">
+                    <div class="player">🧙 PLAYER</div>
+                    <div class="star">⭐ STAR</div>
+                </div>
+
+                <!-- Row 2: centre platform -->
+                <div class="row row-mid">
+                    <div class="platform platform--center">▬▬▬ PLATFORM ▬▬▬</div>
+                </div>
+
+                <!-- Row 3: two side platforms -->
+                <div class="row row-bot">
+                    <div class="platform platform--left">▬ PLATFORM</div>
+                    <div class="platform platform--right">PLATFORM ▬</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PART 5 — Game Panels (Controls · Inventory · Quest Panel) -->
+        <section class="game-panels" aria-label="Game Panels">
+
+            <!-- Controls Panel -->
+            <div class="panel controls-panel">
+                <h2 class="panel-title">🎮 Controls</h2>
+                <div class="controls-grid">
+                    <div class="ctrl-spacer"></div>
+                    <button class="ctrl-btn" aria-label="Move Up">▲</button>
+                    <div class="ctrl-spacer"></div>
+                    <button class="ctrl-btn" aria-label="Move Left">◀</button>
+                    <button class="ctrl-btn ctrl-action" aria-label="Action">A</button>
+                    <button class="ctrl-btn" aria-label="Move Right">▶</button>
+                    <div class="ctrl-spacer"></div>
+                    <button class="ctrl-btn" aria-label="Move Down">▼</button>
+                    <div class="ctrl-spacer"></div>
+                </div>
+                <div class="extra-controls">
+                    <button class="ctrl-btn ctrl-wide" aria-label="Jump">JUMP</button>
+                    <button class="ctrl-btn ctrl-wide" aria-label="Attack">ATTACK</button>
+                </div>
+            </div>
+
+            <!-- Inventory Panel -->
+            <div class="panel inventory-panel">
+                <h2 class="panel-title">🎒 Inventory</h2>
+                <div class="inventory-grid">
+                    <div class="inv-slot filled" title="Health Potion">🧪</div>
+                    <div class="inv-slot filled" title="Magic Scroll">📜</div>
+                    <div class="inv-slot filled" title="Shield">🛡️</div>
+                    <div class="inv-slot filled" title="Sword">⚔️</div>
+                    <div class="inv-slot filled" title="Coins">🪙</div>
+                    <div class="inv-slot empty"></div>
+                    <div class="inv-slot empty"></div>
+                    <div class="inv-slot empty"></div>
+                    <div class="inv-slot filled" title="Key">🗝️</div>
+                    <div class="inv-slot empty"></div>
+                    <div class="inv-slot empty"></div>
+                    <div class="inv-slot empty"></div>
+                </div>
+                <p class="inv-note">Slots: 5 / 12 used</p>
+            </div>
+
+            <!-- Quest Panel -->
+            <div class="panel quest-panel">
+                <h2 class="panel-title">📋 Quest Panel</h2>
+                <ul class="quest-list">
+                    <li class="quest-item quest-done">✅ Collect 100 coins</li>
+                    <li class="quest-item quest-done">✅ Reach Level 1</li>
+                    <li class="quest-item quest-active">🔵 Find the Magic Scroll</li>
+                    <li class="quest-item">⬜ Defeat the Forest Boss</li>
+                    <li class="quest-item">⬜ Unlock the Ancient Gate</li>
+                </ul>
+                <div class="quest-progress">
+                    <span class="progress-label">Progress</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%;">40%</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="game-footer">
+        <p class="footer-brand">⚔️ Flexbox Quest</p>
+        <p class="footer-credit">Built with HTML &amp; CSS Flexbox · Assignment 02 · Dhwani Kherawat · Scaler WebDev 101</p>
+        <p class="footer-copy">© 2026 Dhwani Kherawat</p>
+    </footer>
+
+</body>
+</html>
